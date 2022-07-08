@@ -1,0 +1,1 @@
+for the init of C++ in vs code : https://code.visualstudio.com/docs/languages/cpp
