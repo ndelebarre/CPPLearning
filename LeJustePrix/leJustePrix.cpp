@@ -12,41 +12,55 @@ int main()
     cout << "----------------------" << endl;
 
     srand(time(NULL));
-    auto trouve = false;
     auto nbADeviner = rand() % 1000;
     cout << nbADeviner << endl;
     auto prop{0};
+    auto nbTentatives{0};
 
-    while (trouve != true)
+    do
     {
         cin >> prop;
-        if (prop < nbADeviner)
+
+        if (prop < 10000 && prop >= 0)
         {
-            if (nbADeviner - prop > 100)
+            nbTentatives++;
+            if (prop < nbADeviner)
             {
-                cout << "c'est baucoup plus grand" << endl;
+                if (nbADeviner - prop > 100)
+                {
+                    cout << "c'est baucoup plus grand" << endl;
+                }
+                else
+                {
+                    cout << "plus grand" << endl;
+                }
+            }
+            else if (prop > nbADeviner)
+            {
+                if (prop - nbADeviner > 100)
+                {
+                    cout << "c'est baucoup plus petit" << endl;
+                }
+                else
+                {
+                    cout << "plus petit" << endl;
+                }
             }
             else
             {
-                cout << "plus grand" << endl;
+                cout << "Bravo vous avez trouve le nombre mystere!" << endl;
             }
         }
-        else if (prop > nbADeviner)
-        {
-            if (prop - nbADeviner > 100)
-            {
-                cout << "c'est baucoup plus petit" << endl;
-            }
-            else
-            {
-                cout << "plus petit" << endl;
-            }
-        }
-        else
-        {
-            cout << "Bravo vous avez trouve le nombre mystere!" << endl;
-            trouve = true;
-        }
+    } while (nbADeviner != prop && prop >= 0);
+
+    if (prop == nbADeviner)
+    {
+        cout << "partie terminee ! "
+             << " en " << nbTentatives << " tentatives " << endl;
+    }
+    else
+    {
+        cout << "parties abandonee car mauvaise valeur entrée" << endl;
     }
 
     return EXIT_SUCCESS;
